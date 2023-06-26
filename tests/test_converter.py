@@ -43,35 +43,35 @@ class TestConfigConverter:
     def test_to_flat_dict(self):
         converter = ConfigConverter("")
         converter.config_dict = {
-            "database": {
-                "host": "localhost",
-                "port": 5432,
-                "username": "admin",
-                "password": "secret"
+            "DATABASE": {
+                "HOST": "localhost",
+                "PORT": 5432,
+                "USERNAME": "admin",
+                "PASSWORD": "secret"
             },
-            "server": {
-                "host": "localhost",
-                "port": 8080
+            "SERVER": {
+                "HOST": "localhost",
+                "PORT": 8080
             }
         }
         flat_dict = converter.to_flat_dict()
         assert flat_dict == {
-            "database_host": "localhost",
-            "database_port": 5432,
-            "database_username": "admin",
-            "database_password": "secret",
-            "server_host": "localhost",
-            "server_port": 8080
+            "DATABASE_HOST": "localhost",
+            "DATABASE_PORT": 5432,
+            "DATABASE_USERNAME": "admin",
+            "DATABASE_PASSWORD": "secret",
+            "SERVER_HOST": "localhost",
+            "SERVER_PORT": 8080
         }
 
     def test_write_to_env(self, tmpdir):
         env_file = str(tmpdir.join(".env"))
         converter = ConfigConverter("")
         converter.config_dict = {
-            "database_host": "localhost",
-            "database_port": 5432,
-            "database_username": "admin",
-            "database_password": "secret"
+            "DATABASE_HOST": "localhost",
+            "DATABASE_PORT": 5432,
+            "DATABASE_USERNAME": "admin",
+            "DATABASE_PASSWORD": "secret"
         }
         converter.write_to_env(env_file)
         with open(env_file, "r") as f:
@@ -82,17 +82,17 @@ class TestConfigConverter:
         json_file = str(tmpdir.join("config.json"))
         converter = ConfigConverter("")
         converter.config_dict = {
-            "database_host": "localhost",
-            "database_port": 5432,
-            "database_username": "admin",
-            "database_password": "secret"
+            "DATABASE_HOST": "localhost",
+            "DATABASE_PORT": 5432,
+            "DATABASE_USERNAME": "admin",
+            "DATABASE_PASSWORD": "secret"
         }
         converter.write_to_json(json_file)
         with open(json_file, "r") as f:
             contents = json.load(f)
         assert contents == {
-            "database_host": "localhost",
-            "database_port": 5432,
-            "database_username": "admin",
-            "database_password": "secret"
+            "DATABASE_HOST": "localhost",
+            "DATABASE_PORT": 5432,
+            "DATABASE_USERNAME": "admin",
+            "DATABASE_PASSWORD": "secret"
         }

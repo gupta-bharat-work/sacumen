@@ -12,7 +12,7 @@ pip install config_converter
 
 To use `config_converter`, run the `config_converter` command with the following arguments:
 
-configconverter [CONFIGFILE] [--env-file ENVFILE] [--json-file JSONFILE] [--set-env]
+config_converter [CONFIGFILE] [--env-file ENVFILE] [--json-file JSONFILE] [--set-env]
 
 - `CONFIG_FILE`: Path to the configuration file.
 - `--env-file ENV_FILE`: Path to the `.env` file to write to.
@@ -23,7 +23,7 @@ configconverter [CONFIGFILE] [--env-file ENVFILE] [--json-file JSONFILE] [--set-
 
 Suppose you have a configuration file called `config.yaml` with the following contents:
 
-yaml database: host: localhost port: 5432 username: admin password: secret
+database: host: localhost port: 5432 username: admin password: secret
 
 To generate a flat dictionary from this configuration and write it to an `.env` file, run:
 
@@ -31,9 +31,9 @@ config_converter config.yaml --env-file .env
 
 This will create a `.env` file with the following contents:
 
-DATABASEHOST=localhost 
-DATABASEPORT=5432 
-DATABASEUSERNAME=admin 
+DATABASEHOST=localhost  
+DATABASEPORT=5432   
+DATABASEUSERNAME=admin  
 DATABASEPASSWORD=secret
 
 Note: You can customize the README file content as per your requirements.
